@@ -1,0 +1,2 @@
+policy,episodes,average_cost,standard_deviation,median_cost,minimum_cost,maximum_cost,average_holding_cost,average_stockout_cost,average_ordering_cost,average_discarding_cost,average_service_level,average_stockout_days,average_discard_events,mean_inference_seconds
+Demonstration Baseline,25,194325.7,24308.952553106163,185550.0,159752.5,245840.0,47992.1,126740.0,19593.6,0.0,0.9298195045876234,29.24,0.0,4.7298959875479346e-05

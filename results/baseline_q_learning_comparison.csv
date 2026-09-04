@@ -1,0 +1,3 @@
+policy,episodes,average_cost,standard_deviation,average_holding_cost,average_stockout_cost,average_ordering_cost,average_discarding_cost,average_service_level,average_stockout_days,mean_inference_seconds
+Demonstration Baseline,25,194325.7,24308.952553106163,47992.1,126740.0,19593.6,0.0,0.9298195045876234,29.24,4.7298959875479346e-05
+Tabular Q-Learning,25,448707.6,68450.10582335989,51553.6,364628.0,12544.0,19982.0,0.7926158547006168,29.08,9.803527998737991e-05

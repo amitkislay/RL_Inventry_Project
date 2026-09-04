@@ -1,0 +1,2 @@
+policy,episodes,average_cost,standard_deviation,median_cost,minimum_cost,maximum_cost,average_holding_cost,average_stockout_cost,average_ordering_cost,average_discarding_cost,average_service_level,average_stockout_days,mean_inference_seconds
+Tabular SARSA,25,259092.2,39997.37697988249,248960.0,204640.0,341572.5,98200.2,141756.0,13424.0,5712.0,0.9128480320921041,21.44,7.056768070906402e-05
