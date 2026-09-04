@@ -1,0 +1,12 @@
+zip_file,policy_file,model_files,files_at_zip_root
+DA25M543_Tabular_Q_Learning.zip,policy.py,q_learning_table.pkl,True
+DA25M543_V024_A2C.zip,policy.py,a2c_model.pt,True
+DA25M543_V024_A3C.zip,policy.py,a3c_model.pt,True
+DA25M543_V024_Double_DQN.zip,policy.py,model.pt,True
+DA25M543_V024_DQN.zip,policy.py,model.pt,True
+DA25M543_V024_Neural_Q_Learning.zip,policy.py,neural_q_model.pt,True
+DA25M543_V024_Neural_SARSA.zip,policy.py,neural_sarsa_model.pt,True
+DA25M543_V024_PPO.zip,policy.py,model.pt,True
+DA25M543_V024_REINFORCE_Baseline.zip,policy.py,model.pt,True
+DA25M543_V024_Tabular_SARSA.zip,policy.py,sarsa_table.pkl,True
+DA25M543_V024_TD_Lambda.zip,policy.py,td_lambda_table.pkl,True

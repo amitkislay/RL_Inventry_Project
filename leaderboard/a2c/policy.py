@@ -1,0 +1,42 @@
+from pathlib import Path
+import numpy as np
+import torch
+import torch.nn as nn
+
+STATE_SIZE = 38
+ACTION_VALUES = np.arange(0, 101, 10, dtype=np.int64)
+
+class ActorCriticNetwork(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.encoder = nn.Sequential(
+            nn.Linear(STATE_SIZE, 128), nn.Tanh(),
+            nn.Linear(128, 128), nn.Tanh(),
+        )
+        self.actor = nn.Linear(128, 33)
+        self.critic = nn.Linear(128, 1)
+
+    def forward(self, x):
+        features = self.encoder(x)
+        return self.actor(features).view(-1, 3, 11), self.critic(features).squeeze(-1)
+
+
+def _state(observation):
+    inventory = np.asarray(observation["inventory"], dtype=np.float32) / 1000.0
+    pipeline = np.asarray(observation["arrival_pipeline"], dtype=np.float32).reshape(-1) / 1000.0
+    demand = np.asarray(observation["demand_history"], dtype=np.float32).reshape(-1) / 200.0
+    day = np.asarray(observation["day"], dtype=np.float32).reshape(-1) / 50.0
+    capacity = np.asarray(observation["capacity_utilisation"], dtype=np.float32).reshape(-1)
+    return np.concatenate([inventory, pipeline, demand, day, capacity])
+
+MODEL = ActorCriticNetwork()
+MODEL.load_state_dict(torch.load(Path(__file__).resolve().parent / "a2c_model.pt", map_location="cpu"))
+MODEL.eval()
+
+def run_policy(observation):
+    state = torch.as_tensor(_state(observation), dtype=torch.float32).unsqueeze(0)
+    with torch.no_grad():
+        logits, _ = MODEL(state)
+        indices = logits[0].argmax(dim=1).cpu().numpy()
+
+    return [int(ACTION_VALUES[int(index)]) for index in indices]
